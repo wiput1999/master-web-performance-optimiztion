@@ -12,6 +12,8 @@
         <!-- favicon -->
         <link rel="shortcut icon" href="images/icon/favicon.ico">
 
+
+
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" as="style"/>
         <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style" crossorigin="anonymous"/>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" as="style"/>
@@ -38,6 +40,10 @@
         <link rel="preload" href="js/main.js" as="script" />
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js" as="script" />
 
+
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap">
 
         <!-- animation -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
@@ -590,7 +596,9 @@
                     elements_selector: ".lazy"
                 });
 
-
+                if (lazyLoadInstance) {
+                    lazyLoadInstance.update();
+                }
             })
         </script>
 
