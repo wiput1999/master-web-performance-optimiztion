@@ -29,12 +29,12 @@ var isMobile = {
 $(document).ready(function () {
 
     bind_shrink_header();
-    
+
     var isMobile = false;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         isMobile = true;
     }
-    
+
     $('.owl-slider-full').owlCarousel({
         navigation: true, // Show next and prev buttons
         slideSpeed: 300,
@@ -44,7 +44,7 @@ $(document).ready(function () {
         singleItem: true,
         navigationText: ['<i class="fa fa-long-arrow-left"></i>', '<i class="fa fa-long-arrow-right"></i>']
     });
-    
+
     $('.owl-slider-style2').owlCarousel({
         navigation: true, // Show next and prev buttons
         slideSpeed: 300,
@@ -133,7 +133,7 @@ $(document).ready(function () {
     /* ===================================
      Tab Active After Export
      ====================================== */
-    
+
     var tab_id = $('.nav-tabs').parents('section').attr('id');
     if(tab_id != undefined)
     {
@@ -150,9 +150,9 @@ $(document).ready(function () {
     }
 
     /* ===================================
-     Toggle Close 
+     Toggle Close
      ====================================== */
-    $(document).on('click', 'ul.navbar-nav li', function (event) { 
+    $(document).on('click', 'ul.navbar-nav li', function (event) {
         $('#bs-example-navbar-collapse-1').removeClass('in');
         $('#bs-example-navbar-collapse-1').addClass('collapse');
         $('.navbar-toggle').addClass('collapsed');
@@ -173,7 +173,7 @@ $(document).ready(function () {
     /*==============================================================*/
     //Lightbox gallery - START CODE
     /*==============================================================*/
-    
+
      $('.lightbox-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -213,7 +213,7 @@ $(document).ready(function () {
      ==============================================================*/
 
     $(window).scroll(function () {
-        
+
         var shrink_header = $('.shrink-header').length;
         var shrink_medium_header = $('.shrink-medium-header').length;
         var shrink_big_header = $('.shrink-big-header').length;
@@ -230,7 +230,7 @@ $(document).ready(function () {
             }else{
               var header_offset = -110;
             }
-            
+
         }else if(shrink_big_header){
             var windowsize = $(window).width();
             if(windowsize <= 991)
@@ -239,7 +239,7 @@ $(document).ready(function () {
             }else{
               var header_offset = -115;
             }
-            
+
         }else if(shrink_header || shrink_transparent_header_light || shrink_transparent_header_dark){
             var windowsize = $(window).width();
             if(windowsize <= 991 && windowsize == 768)
@@ -250,7 +250,7 @@ $(document).ready(function () {
             }else{
               var header_offset = -68;
             }
-            
+
         }else{
             var header_offset = 1;
         }
@@ -277,7 +277,7 @@ $(document).ready(function () {
         filter: ':not(.btn-very-small)'
     });
     /*===========================================================
-     Contact Form 
+     Contact Form
      ============================================================ */
 
     $('.tz_submit').on('click', function (event) {
@@ -295,7 +295,7 @@ $(document).ready(function () {
         $('#' + section_id).find('form').find('button').after(submit_loader);
         $('#' + section_id).find('form input, form select,form textarea').each(
                 function (index) {
-                    
+
                     if ($(this).is('[data-email="required"]')) {
                         var required_val = $(this).val();
                         if (required_val != '') {
@@ -315,7 +315,7 @@ $(document).ready(function () {
                     }
 
                 });
-        
+
         var captcha_length = $('.g-recaptcha').length;
         if (captcha_length >= 1) {
             var response = grecaptcha.getResponse();
@@ -331,7 +331,7 @@ $(document).ready(function () {
                 tz_process = true;
             }
         }
-        if (tz_process) 
+        if (tz_process)
         {
             localStorage.setItem('tz_section',section_id);
             $.post("tz_mail/contact.php", {
@@ -340,21 +340,21 @@ $(document).ready(function () {
             }, function (data) {
                 $('#loading').remove();
                 var tz_form_output = '';
-                if(data) 
+                if(data)
                 {
-                    if(data.type == "tz_message") 
+                    if(data.type == "tz_message")
                     {
-                       $('#error').remove(); 
+                       $('#error').remove();
                        $('#success').remove();
-                       $('#google-recaptcha-error').remove(); 
+                       $('#google-recaptcha-error').remove();
                        var tz_form_output = '<div id="success" class="no-margin-lr alt-font">'+data.text+'</div>';
                     }else if (data.type == "tz_error") {
                         $('#success').remove();
-                        $('#error').remove(); 
+                        $('#error').remove();
                         var tz_form_output = '<div id="error" class="no-margin-lr alt-font">'+data.text+'</div>';
                     }else{
                         var tz_form_output = '';
-                    } 
+                    }
                 }
 
                 if(tz_form_output != '')
@@ -377,7 +377,7 @@ $(document).ready(function () {
                 localStorage.removeItem('tz_section');
             }, 'json');
         }
-        
+
         $('#' + section_id).find('form input,form textarea').each(function (index) {
             $(this).keypress(function () {
                 $(this).removeClass('tz_input_error');
@@ -399,7 +399,7 @@ $(document).ready(function () {
             });
         });
     });
-    
+
 });
 
 /* ===================================
@@ -554,7 +554,7 @@ function animatecounters() {
    TWITTER FEED
 ============================================================== */
 function handleTweets(tweets) {
-    
+
     var x = tweets.length,
     n = 0,
     element = document.getElementById('twitter-feed'),
@@ -564,9 +564,9 @@ function handleTweets(tweets) {
         n++;
     }
     html += '</div>';
-    
+
     element.innerHTML = html;
-       
+
     /* Twits attached to owl-carousel */
     $(".twitter-post-slides").owlCarousel({
         slideSpeed : 300,
@@ -578,8 +578,8 @@ function handleTweets(tweets) {
     });
 }
 
-if( $('#twitter-feed').length ) 
-{   
+if( $('#twitter-feed').length )
+{
     var widgetId = $('#twitter-feed').attr('data-widget-id');
     var tz_config_feed = {
       "id": widgetId,
